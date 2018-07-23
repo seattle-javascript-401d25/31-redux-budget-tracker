@@ -1,4 +1,4 @@
-![cf](http://i.imgur.com/7v5ASc8.png) 31: To Do App with Redux
+![cf](http://i.imgur.com/7v5ASc8.png) 31: Redux Budget Tracker
 ===
 
 ## Submission Instructions
