@@ -59,8 +59,6 @@ Your lab directory must include
 ###### action creators
 * you should create an action creator for each interaction supported by your category reducer
 
-###### store
-* in `lib/store.js` export a function that will return a new redux store from your category reducer
 
 ##### Components
 Create the following components and structure them according to the following diagram.
@@ -96,14 +94,11 @@ The App component should set up the Provider for the redux store and the Router.
 * should display a CategoryForm
   * `onComplete` the form should update the component in the application state
 
-#### Test
+#### Tests (not required, this is a stretch goal)
 * Test the following scenario using Cypress.io:
     * The user should travel to the homepage at `/` and immediately see the `Dashboard` component
     * The user should fill out a new category name and budget, and submit the form to display that new category on the page in an unordered list.
 
-### Stretch Goals
-* Continue your testing scenario with Cypress to update and delete the category item. Challenge yourself by testing for full-CRUD operations on multiple categories. 
-* Save your categories in local storage to add a persistence layer
 
 #### Documentation
 Write a description of the project in your README.md
