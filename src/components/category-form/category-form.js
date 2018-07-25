@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 const defaultState = {
   name: '',
+  budget: 0,
 };
 
 export default class CategoryForm extends React.Component {
@@ -12,8 +13,8 @@ export default class CategoryForm extends React.Component {
   }
 
   handleChange = (event) => {
-    const { value } = event.target;
-    this.setState({ title: value });
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
   }
 
   handleSubmit = (event) => {
@@ -32,7 +33,7 @@ export default class CategoryForm extends React.Component {
           type="text"
           name="name"
           placeholder="budget name"
-          value={this.state.value}
+          value={this.state.name}
           onChange={this.handleChange}
         />
         <input 
@@ -40,7 +41,7 @@ export default class CategoryForm extends React.Component {
           min="0"
           name="budget"
           placeholder="budget amount"
-          value={this.state.value}
+          value={this.state.budget}
           onChange={this.handleChange}
         />
         <button type="submit">{buttonText}</button>

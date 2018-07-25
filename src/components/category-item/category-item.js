@@ -5,18 +5,25 @@ import CategoryForm from '../category-form/category-form';
 import * as categoryActions from '../../action/category';
 import './category-item.scss';
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    categoryDelete: data => dispatch(categoryActions.deleteCategory(data)), 
+    categoryUpdate: data => dispatch(categoryActions.updateCategory(data)),
+  };
+};
+
 class Category extends React.Component {
   render() {
     const {
       category, 
       key,
-      categoryDestroy,
+      categoryDelete,
       categoryUpdate,
     } = this.props;
     return (
       <div className="category" key={key}>
         <h1> { category.name } </h1>
-        <button onClick={() => categoryDestroy(category)}> Delete </button>
+        <button onClick={() => categoryDelete(category)}> Delete </button>
         <CategoryForm category={category} onComplete={categoryUpdate}/>
       </div>
     );
@@ -26,15 +33,8 @@ class Category extends React.Component {
 Category.propTypes = {
   category: PropTypes.object,
   key: PropTypes.number,
-  categoryDestroy: PropTypes.func,
+  categoryDelete: PropTypes.func,
   categoryUpdate: PropTypes.func,
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    categoryDestroy: data => dispatch(categoryActions.destroy(data)), 
-    categoryUpdate: data => dispatch(categoryActions.update(data)),
-  };
 };
 
 export default connect(null, mapDispatchToProps)(Category);

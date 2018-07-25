@@ -5,15 +5,28 @@ import * as categoryActions from '../../action/category';
 import CategoryForm from '../category-form/category-form';
 import CategoryItem from '../category-item/category-item';
 
+const mapStateToProps = (store) => {
+  return {
+    categories: store,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    categoryCreate: data => dispatch(categoryActions.createCategory(data)),
+  };
+};
+
 class Landing extends React.Component {
   render() {
-    const { categorys, categoryCreate } = this.props;
+    const { categories, categoryCreate } = this.props;
     return (
       <div>
         <CategoryForm onComplete={categoryCreate} />
+        <h2>Saved Categories</h2>
         <ul>
         {
-          categorys.map((currentCategory, i) => <CategoryItem category={currentCategory} key={i} />)
+          categories.map(category => <CategoryItem category={category} key={category.id} />)
         }
         </ul>
       </div>
@@ -22,20 +35,8 @@ class Landing extends React.Component {
 }
 
 Landing.propTypes = {
-  categorys: PropTypes.array,
+  categories: PropTypes.array,
   categoryCreate: PropTypes.func,
-};
-
-const mapStateToProps = (store) => {
-  return {
-    categorys: store,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    categoryCreate: data => dispatch(categoryActions.create(data)),
-  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);
