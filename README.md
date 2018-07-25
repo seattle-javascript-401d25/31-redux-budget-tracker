@@ -1,22 +1,7 @@
-# DATA STRUCTURES AND ALGORITHMS TEMPLATE README
-## Travis Badge
-<!-- YOUR TRAVIS CI BADGE HERE -->
+# Budget Tracker
 
-## Challenge
-<!-- YOUR PROBLEM DOMAIN HERE -->
+## Use
+Super useful app. You can add a budget and a cost, and save the values. There is also full CUD! You can create a budget, update a budget, and delete a budget!
 
-## Whiteboarding Solution:
- <!--YOUR GITHUB IMAGE URL BELOW  -->
-![alt text](YOUR-IMAGE-URL-HERE.jpg)
-
-## Code Solution
-<!-- YOUR CODE HERE -->
-
-<!-- ====================================================================== -->
-
-# LAB TEMPLATE README
-## Travis Badge
-<!-- YOUR TRAVIS CI BADGE HERE -->
-
-## Code
-<!-- YOUR CODE DESCRIPTION HERE -->
+##Styling
+Please note the excellent dark theme, complete with nicely colored highlights. It is quite easy on the eyes.
