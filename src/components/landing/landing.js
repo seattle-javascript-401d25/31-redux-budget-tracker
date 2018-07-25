@@ -26,7 +26,7 @@ class Landing extends React.Component {
         <h2>Saved Categories</h2>
         <ul>
         {
-          categories.map(category => <CategoryItem category={category} key={category.id} />)
+          categories.map(category => <CategoryItem category={category} key={category._id} />)
         }
         </ul>
       </div>

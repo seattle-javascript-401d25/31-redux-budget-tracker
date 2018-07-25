@@ -1,20 +1,13 @@
 import uuid from 'uuid/v4';
 
 const example1 = {
-  id: uuid(),
+  _id: uuid(),
   createdOn: new Date(),
   name: 'Example name 1',
   budget: 100,
 };
 
-const example2 = {
-  id: uuid(),
-  createdOn: new Date(),
-  name: 'Example name 2',
-  budget: 200,
-};
-
-const emptyState = [example1, example2];
+const emptyState = [example1];
 
 export default (state = emptyState, { type, payload }) => {
   switch (type) {

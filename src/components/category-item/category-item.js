@@ -21,11 +21,11 @@ class Category extends React.Component {
       categoryUpdate,
     } = this.props;
     return (
-      <div className="category" key={key}>
-        <h1> { category.name } </h1>
-        <button onClick={() => categoryDelete(category)}> Delete </button>
+      <li className="category-item" key={key}>
+        <h2> { category.name } </h2>
         <CategoryForm category={category} onComplete={categoryUpdate}/>
-      </div>
+        <button onClick={() => categoryDelete(category)}> Delete </button>
+      </li>
     );
   }
 }
