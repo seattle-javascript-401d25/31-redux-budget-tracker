@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CategoryForm from '../category-form/category-form';
 import * as categoryActions from '../../action/category';
-import './category-item.scss';
+import './category.scss';
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -21,7 +21,7 @@ class Category extends React.Component {
       categoryUpdate,
     } = this.props;
     return (
-      <li className="category-item" key={key}>
+      <li className="category" key={key}>
         <h2> { category.name } </h2>
         <CategoryForm category={category} onComplete={categoryUpdate}/>
         <button onClick={() => categoryDelete(category)}> Delete </button>
