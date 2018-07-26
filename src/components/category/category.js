@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import CategoryForm from '../category-form/category-form';
 import * as categoryActions from '../../action/category';
 import './category.scss';
+import ExpenseForm from '../expense-form/expense-form';
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -25,6 +26,7 @@ class Category extends React.Component {
         <h2> { category.name } </h2>
         <CategoryForm category={category} onComplete={categoryUpdate}/>
         <button onClick={() => categoryDelete(category)}> Delete </button>
+        <ExpenseForm />
       </li>
     );
   }

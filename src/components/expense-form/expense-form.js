@@ -31,8 +31,8 @@ export default class ExpenseForm extends React.Component {
 
   render() {
     const { expense } = this.props;
-    const buttonText = expense ? 'Update Expense' : 'Create Card';
-    const formText = expense ? `Update ${expense.name} Expense` : 'Create Card';
+    const buttonText = expense ? 'Update Expense' : 'Create Expense';
+    const formText = expense ? `Update ${expense.name} Expense` : 'Create Expense';
     
     return (
       <form
