@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './category-form.scss';
+
 const defaultState = {
   title: '',
+  price: 0,
+  titlePrice: [],
 };
 
 export default class CategoryForm extends React.Component {
@@ -12,8 +16,10 @@ export default class CategoryForm extends React.Component {
   }
 
   handleChange = (event) => {
-    const { value } = event.target;
-    this.setState({ title: value });
+    const { name, value } = event.target;
+    this.setState({ 
+      [name]: value,
+    });
   }
 
   handleSubmit = (event) => {
@@ -22,21 +28,29 @@ export default class CategoryForm extends React.Component {
   }
 
   render() {
-    console.log(this.props, 'WHAT IS THIS');
     const buttonText = this.props.category ? 'Update' : 'Create';
     return (
       <form
         onSubmit={ this.handleSubmit }
         className="category-form"
       >
-        <input 
-          type="text"
-          name="title"
-          placeholder="title"
-          value={this.state.value}
-          onChange={this.handleChange}
-        />
-        <button type="submit">{buttonText}</button>
+      <input
+      type="text"
+      name="title"
+      placeholder="title"
+      value={this.state.value}
+      onChange={this.handleChange}
+      />
+      <input
+      type="number"
+      min="0.00" 
+      step="0.01"
+      name="price"
+      placeholder="0.00"
+      value={this.state.value}
+      onChange={this.handleChange}
+      />
+      <button type="submit">{buttonText}</button>
       </form>
     );
   }
