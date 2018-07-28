@@ -5,10 +5,10 @@ const defaultState = {
   title: '',
 };
 
-export default class SectionForm extends React.Component {
+export default class CategoryForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.section || defaultState;
+    this.state = this.props.category || defaultState;
   }
 
   handleChange = (event) => {
@@ -22,12 +22,12 @@ export default class SectionForm extends React.Component {
   }
 
   render() {
-    console.log(this.props, 'WHAT IS THIS')
-    const buttonText = this.props.section ? 'Update' : 'Create';
+    console.log(this.props, 'WHAT IS THIS');
+    const buttonText = this.props.category ? 'Update' : 'Create';
     return (
       <form
         onSubmit={ this.handleSubmit }
-        className="section-form"
+        className="category-form"
       >
         <input 
           type="text"
@@ -42,7 +42,7 @@ export default class SectionForm extends React.Component {
   }
 }
 
-SectionForm.propTypes = {
+CategoryForm.propTypes = {
   onComplete: PropTypes.func,
-  section: PropTypes.object,
+  category: PropTypes.object,
 };
