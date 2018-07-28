@@ -1,0 +1,32 @@
+.app {
+  background-color: rgb(73, 0, 210);
+  text-align: center;
+}
+
+.app h1 {
+  color: rgb(218, 218, 218);
+  text-shadow: 1px 1px 3px rgb(33, 0, 96);
+  font-family: Helvetica, sans-serif;
+}
+
+nav > ul > li {
+  display: inline-block;
+  font-size: 18px;
+  margin-top: 1em;
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+nav a {
+  color: white;
+  text-shadow: 1px 1px 3px rgb(32, 0, 147);
+  border: 1px solid rgb(44, 0, 114);
+  border-radius: 5%;
+  box-shadow: 0px 0px 5px 0px rgb(35, 0, 162);
+  padding: 10px;
+  width: 8em;
+}
+
+nav a:hover {
+  transform: skew(-10deg);
+}
