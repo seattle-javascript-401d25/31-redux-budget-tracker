@@ -3,12 +3,29 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CategoryForm from '../category-form/category-form';
 import * as categoryActions from '../../action/section';
-
 import './category.scss';
+
+import CardForm from '../card-form/card-form';
+import Card from '../card/card';
+import * as cardActions from '../../action/card';
+
+const mapStateToProps = store => ({
+  cards: store.cards,
+});
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    cardCreate: data => dispatch(cardActions.createCard(data)),
+    categoryRemove: data => dispatch(categoryActions.remove(data)),
+    categoryUpdate: data => dispatch(categoryActions.update(data)),
+  };
+};
 
 class Category extends React.Component {
   render() {
     const {
+      // cards,
+      // cardCreate,
       category,
       key,
       categoryRemove,
@@ -21,8 +38,16 @@ class Category extends React.Component {
           <h3>${category.price.toLocaleString({ style: 'currency' })}</h3>
         </div>
         <div>
-          <CategoryForm category={category} onComplete={categoryUpdate}/>
           <button className="delete" onClick={() => categoryRemove(category)}>Delete</button>
+          <CategoryForm category={category} onComplete={categoryUpdate}/>
+        </div>
+        <div className="card-form">
+          <CardForm section={section} onComplete={cardCreate} />
+          <div className="card-list">
+            {
+              sectionCards.map(card => <Card card={card} key={card.id} />)
+            }
+          </div>
         </div>
       </div>
     );
@@ -30,17 +55,12 @@ class Category extends React.Component {
 }
 
 Category.propTypes = {
+  cards: PropTypes.object,
+  cardCreate: PropTypes.func,
   category: PropTypes.object,
   key: PropTypes.number,
   categoryRemove: PropTypes.func,
   categoryUpdate: PropTypes.func,
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    categoryRemove: data => dispatch(categoryActions.remove(data)),
-    categoryUpdate: data => dispatch(categoryActions.update(data)),
-  };
-};
-
-export default connect(null, mapDispatchToProps)(Category);
+export default connect(mapStateToProps, mapDispatchToProps)(Category);
