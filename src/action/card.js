@@ -1,10 +1,10 @@
 import uuid from 'uuid/v4';
 
-export const createCard = ({ content, sectionId }) => ({
+export const createCard = ({ content, categoryId }) => ({
   type: 'CARD_CREATE',
   payload: {
     content,
-    sectionId,
+    categoryId,
     id: uuid(),
   },
 });

@@ -5,6 +5,8 @@ import * as categoryActions from '../../action/section';
 import CategoryForm from '../category-form/category-form';
 import Category from '../category/category';
 
+
+// This is us grabbing the Redux store to make those props of this component
 const mapStateToProps = (store) => {
   return {
     categories: store.categories,
@@ -14,21 +16,18 @@ const mapStateToProps = (store) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     categoryCreate: data => dispatch(categoryActions.create(data)),
-    // dispatch({ type: 'CATEGORY_CREATE', payload: stuff})
+    // dispatch({ type: 'category_CREATE', payload: stuff})
   };
 };
-
 class Dashboard extends React.Component {
   render() {
     const { categories, categoryCreate } = this.props;
     return (
-      <div className="TEST">
+      <div>
         <CategoryForm onComplete={categoryCreate} />
-        <div className="category-container">
         {
-          categories.map((currentCategory, i) => <Category category={currentCategory} key={i}/>)
+          categories.map((currentCategory, i) => <Category category={currentCategory} key={i} />)
         }
-        </div>
       </div>
     );
   }

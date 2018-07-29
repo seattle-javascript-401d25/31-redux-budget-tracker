@@ -32,4 +32,4 @@ export default (state = emptyState, { type, payload }) => {
     default: 
       return state;
   }
-}
+};
