@@ -5,6 +5,19 @@ import * as categoryActions from '../../action/section';
 import CategoryForm from '../category-form/category-form';
 import Category from '../category/category';
 
+const mapStateToProps = (store) => {
+  return {
+    categories: store.categories,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    categoryCreate: data => dispatch(categoryActions.create(data)),
+    // dispatch({ type: 'CATEGORY_CREATE', payload: stuff})
+  };
+};
+
 class Dashboard extends React.Component {
   render() {
     const { categories, categoryCreate } = this.props;
@@ -24,18 +37,6 @@ class Dashboard extends React.Component {
 Dashboard.propTypes = {
   categories: PropTypes.array,
   categoryCreate: PropTypes.func,
-};
-
-const mapStateToProps = (store) => {
-  return {
-    categories: store,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    categoryCreate: data => dispatch(categoryActions.create(data)),
-  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
