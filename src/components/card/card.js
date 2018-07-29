@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import CardForm from '../card-form/card-form';
 import * as cardActions from '../../action/card';
 
-const mapDispatchToProp = dispatch => ({
+const mapDispatchToProps = dispatch => ({
   cardRemove: data => dispatch(cardActions.removeCard(data)),
   cardUpdate: data => dispatch(cardActions.updateCard(data)),
 });
