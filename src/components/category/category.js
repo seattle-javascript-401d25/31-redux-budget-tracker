@@ -24,13 +24,16 @@ const mapDispatchToProps = (dispatch) => {
 class Category extends React.Component {
   render() {
     const {
-      // cards,
-      // cardCreate,
+      cards,
+      cardCreate,
       category,
       key,
       categoryRemove,
       categoryUpdate,
     } = this.props; 
+
+    const categoryCards = cards[category.id];
+
     return (
       <div className="category" key={key}>
         <div className="title-price">
@@ -42,10 +45,10 @@ class Category extends React.Component {
           <CategoryForm category={category} onComplete={categoryUpdate}/>
         </div>
         <div className="card-form">
-          <CardForm section={section} onComplete={cardCreate} />
+          <CardForm category={category} onComplete={cardCreate} />
           <div className="card-list">
             {
-              sectionCards.map(card => <Card card={card} key={card.id} />)
+              categoryCards.map(card => <Card card={card} key={card.id} />)
             }
           </div>
         </div>
