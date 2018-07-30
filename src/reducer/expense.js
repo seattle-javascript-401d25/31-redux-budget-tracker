@@ -19,9 +19,13 @@ export default (state = emptyState, { type, payload }) => {
       updatedExpenses = [...previousExpenses, payload];
       return { ...state, [categoryId]: updatedExpenses };
     case 'EXPENSE_UPDATE':
+      console.log(payload, 'PAYLOAD');
+      console.log(payload._id, 'PAYLOAD ID');
       categoryId = payload.categoryId; // eslint-disable-line
       previousExpenses = state[categoryId];
+      console.log(previousExpenses, 'PREV EXPENSES');
       updatedExpenses = previousExpenses.map(expense => (expense.id === payload._id ? payload : expense));
+      console.log(updatedExpenses, 'UPDATED EXPENSES');
       return { ...state, [categoryId]: updatedExpenses };
     case 'EXPENSE_REMOVE':
       categoryId = payload.categoryId; // eslint-disable-line

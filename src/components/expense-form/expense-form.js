@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './expense-form.scss';
 
-const emptyState = {
+const defaultState = {
   name: '',
   price: 0,
 };
@@ -10,18 +10,18 @@ const emptyState = {
 export default class ExpenseForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = props.expense || emptyState;
-  }
+    this.state = this.props.expense || defaultState;
+  } 
 
   handleChange = (event) => {
     event.preventDefault();
-    const { name, value } = event;
+    const { name, value } = event.target;
     this.setState({ [name]: value });
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const categoryId = this.props.category ? this.props.category._id : this.props.expense.sectionId;
+    const categoryId = this.props.category._id;
 
     this.props.onComplete({
       ...this.state,
@@ -64,6 +64,6 @@ export default class ExpenseForm extends React.Component {
 
 ExpenseForm.propTypes = {
   onComplete: PropTypes.func,
-  category: PropTypes.object,
   expense: PropTypes.object,
+  category: PropTypes.object,
 };

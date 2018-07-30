@@ -7,7 +7,8 @@ import Category from '../category/category';
 
 const mapStateToProps = (store) => {
   return {
-    categories: store,
+    categories: store.categories,
+    sections: store.sections,
   };
 };
 
