@@ -5,8 +5,8 @@ import * as expenseActions from '../../action/expense';
 import ExpenseForm from '../expense-form/expense-form';
 
 const mapDispatchToProps = dispatch => ({
-  expenseUpdate: data => dispatch(expenseActions.updateExpense(data)), 
-  expenseDelete: data => dispatch(expenseActions.deleteExpense(data)),
+  updateExpense: data => dispatch(expenseActions.updateExpense(data)), 
+  deleteExpense: data => dispatch(expenseActions.deleteExpense(data)),
 });
 
 class Expense extends React.Component {
@@ -14,8 +14,8 @@ class Expense extends React.Component {
     const {
       expense,
       category,
-      expenseUpdate,
-      expenseDelete,
+      updateExpense,
+      deleteExpense,
     } = this.props;
 
     return (
@@ -23,7 +23,7 @@ class Expense extends React.Component {
         <h3>{ expense.name }</h3>
         <ExpenseForm
           expense={ expense }
-          onComplete={ expenseUpdate }
+          onComplete={ updateExpense }
           category={ category }
         />
         <button onClick={() => {
@@ -32,7 +32,7 @@ class Expense extends React.Component {
             expense,
           };
 
-          expenseDelete(payload);
+          deleteExpense(payload);
         }}/>
       </li>
     );
@@ -42,8 +42,8 @@ class Expense extends React.Component {
 Expense.propTypes = {
   expense: PropTypes.object,
   category: PropTypes.object,
-  expenseUpdate: PropTypes.func,
-  expenseDelete: PropTypes.func,
+  updateExpense: PropTypes.func,
+  deleteExpense: PropTypes.func,
 };
 
 export default connect(null, mapDispatchToProps)(Expense);
