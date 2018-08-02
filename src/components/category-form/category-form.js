@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './category-form.scss';
+
 const defaultState = {
   title: '',
 };
@@ -30,6 +32,7 @@ export default class CategoryForm extends React.Component {
         data-cy="category-form"
       >
         <input 
+          className="title"
           type="text"
           name="title"
           placeholder="title"

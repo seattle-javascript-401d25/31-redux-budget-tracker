@@ -26,7 +26,7 @@ class Dashboard extends React.Component {
       <div>
         <CategoryForm onComplete={categoryCreate} />
         {
-          categories.map((currentCategory, i) => <Category category={currentCategory} key={i} />)
+          categories ? categories.map((currentCategory, i) => <Category category={currentCategory} key={i} />) : null
         }
       </div>
     );
