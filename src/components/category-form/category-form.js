@@ -5,8 +5,6 @@ import './category-form.scss';
 
 const defaultState = {
   title: '',
-  price: 0,
-  titlePrice: [],
 };
 
 export default class CategoryForm extends React.Component {
@@ -16,10 +14,8 @@ export default class CategoryForm extends React.Component {
   }
 
   handleChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({ 
-      [name]: value,
-    });
+    const { value } = event.target;
+    this.setState({ title: value });
   }
 
   handleSubmit = (event) => {
@@ -33,24 +29,17 @@ export default class CategoryForm extends React.Component {
       <form
         onSubmit={ this.handleSubmit }
         className="category-form"
+        data-cy="category-form"
       >
-      <input
-      type="text"
-      name="title"
-      placeholder="title"
-      value={this.state.value}
-      onChange={this.handleChange}
-      />
-      <input
-      type="number"
-      min="0.00" 
-      step="0.01"
-      name="price"
-      placeholder="0.00"
-      value={this.state.value}
-      onChange={this.handleChange}
-      />
-      <button type="submit">{buttonText}</button>
+        <input 
+          className="title"
+          type="text"
+          name="title"
+          placeholder="title"
+          value={this.state.value}
+          onChange={this.handleChange}
+        />
+        <button type="submit">{buttonText}</button>
       </form>
     );
   }

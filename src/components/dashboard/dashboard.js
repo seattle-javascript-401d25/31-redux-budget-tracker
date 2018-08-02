@@ -5,17 +5,29 @@ import * as categoryActions from '../../action/section';
 import CategoryForm from '../category-form/category-form';
 import Category from '../category/category';
 
+
+// This is us grabbing the Redux store to make those props of this component
+const mapStateToProps = (store) => {
+  return {
+    categories: store.categories,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    categoryCreate: data => dispatch(categoryActions.create(data)),
+    // dispatch({ type: 'category_CREATE', payload: stuff})
+  };
+};
 class Dashboard extends React.Component {
   render() {
     const { categories, categoryCreate } = this.props;
     return (
-      <div className="TEST">
+      <div>
         <CategoryForm onComplete={categoryCreate} />
-        <div className="category-container">
         {
-          categories.map((currentCategory, i) => <Category category={currentCategory} key={i}/>)
+          categories ? categories.map((currentCategory, i) => <Category category={currentCategory} key={i} />) : null
         }
-        </div>
       </div>
     );
   }
@@ -24,18 +36,6 @@ class Dashboard extends React.Component {
 Dashboard.propTypes = {
   categories: PropTypes.array,
   categoryCreate: PropTypes.func,
-};
-
-const mapStateToProps = (store) => {
-  return {
-    categories: store,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    categoryCreate: data => dispatch(categoryActions.create(data)),
-  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
